@@ -60,6 +60,7 @@ type State struct {
 	Flag        bool   `json:"flag,omitempty"`
 	Status      int16  `json:"status,omitempty"`
 	Humidity    int16  `json:"humidity,omitempty"`
+	Pressure    int16  `json:"pressure,omitempty"`
 	LightLevel  int16  `json:"lightlevel,omitempty"`
 	Dark        bool   `json:"dark,omitempty"`
 	Daylight    bool   `json:"daylight,omitempty"`
