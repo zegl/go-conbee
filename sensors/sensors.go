@@ -62,6 +62,7 @@ type State struct {
 	Humidity    int16  `json:"humidity,omitempty"`
 	Pressure    int16  `json:"pressure,omitempty"`
 	LightLevel  int16  `json:"lightlevel,omitempty"`
+	Lux         int16  `json:"lux,omitempty"`
 	Dark        bool   `json:"dark,omitempty"`
 	Daylight    bool   `json:"daylight,omitempty"`
 	LastUpdated string `json:"lastupdated,omitempty"`
