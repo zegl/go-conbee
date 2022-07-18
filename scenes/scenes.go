@@ -1,7 +1,5 @@
 package scenes
 
-import ()
-
 type Scenes struct {
 	Hostname string
 	APIkey   string
@@ -10,7 +8,7 @@ type Scenes struct {
 type Scene struct {
 	ID     string
 	Name   string   `json:"name"`
-	Lights []string `json:lights`
+	Lights []string `json:"lights"`
 }
 
 func New(hostname string, apikey string) *Scenes {

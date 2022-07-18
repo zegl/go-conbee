@@ -22,7 +22,7 @@ func init() {
 func TestAquireKey(t *testing.T) {
 	testUsername := "deadc0ffee"
 	testDeviceType := "unittest"
-	apiResponse, err := testConfiguration.AquireAPIKey(testUsername, testDeviceType)
+	apiResponse, err := testConfiguration.AcquireAPIKey(testUsername, testDeviceType)
 	if err != nil {
 		t.Log("TestAquireKey Error: ", err)
 		t.Fail()

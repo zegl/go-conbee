@@ -66,6 +66,8 @@ type State struct {
 	Dark        bool   `json:"dark,omitempty"`
 	Daylight    bool   `json:"daylight,omitempty"`
 	LastUpdated string `json:"lastupdated,omitempty"`
+	Consumption int64  `json:"consumption,omitempty"`
+	Power       int64  `json:"power,omitempty"`
 }
 
 func New(hostname string, apikey string) *Sensors {

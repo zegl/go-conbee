@@ -17,7 +17,7 @@ import (
 )
 
 var (
-	aquireAPIkeyURL  = "http://%s/api"
+	acquireAPIkeyURL = "http://%s/api"
 	configurationURL = "http://%s/api/%s/config"
 	deleteAPIkeyURL  = "http://%s/api/%s/config/whitelist/%s"
 	fullStateURL     = "http://%s/api/%s"
@@ -29,52 +29,51 @@ type User struct {
 }
 
 type SWUpdate struct {
-	UpdateState int    `json:updatestate`
-	URL         string `json:url`
-	Text        string `json:text`
-	Notify      bool   `json:notify`
+	UpdateState int    `json:"updatestate"`
+	URL         string `json:"url"`
+	Text        string `json:"text"`
+	Notify      bool   `json:"notify"`
 }
 
 type Whitelist struct {
 	LastUseDate string `json:"last use date"`
 	CreateDate  string `json:"create date"`
-	Name        string `json:name`
+	Name        string `json:"name"`
 }
 
 type Configuration struct {
 	Hostname            string
 	APIVersion          string               `json:"apiversion,omitempty"`
-	DHCP                bool                 `json:dhcp`
-	Gateway             string               `json:gateway`
-	IPAddress           string               `json:ipaddress`
-	LinkButton          bool                 `json:linkbutton`
-	LocalTime           string               `json:localtime`
-	Mac                 string               `json:mac`
+	DHCP                bool                 `json:"dhcp"`
+	Gateway             string               `json:"gateway"`
+	IPAddress           string               `json:"ipaddress"`
+	LinkButton          bool                 `json:"linkbutton"`
+	LocalTime           string               `json:"localtime"`
+	Mac                 string               `json:"mac"`
 	Name                string               `json:"name,omitempty"`
-	NetMask             string               `json:netmask`
-	NetworkOpenDuration int                  `json:networkopenduration`
-	PanID               int                  `json:panid`
-	PortalServices      bool                 `json:portalservices`
-	ProxyAddress        string               `json:proxyaddress`
-	ProxyPort           int                  `json:proxyport`
-	SWUpdate            SWUpdate             `json:swupdate`
-	SWVersion           string               `json:swversion`
-	TimeFormat          string               `json:timeformat`
-	TimeZone            string               `json:timezone`
-	UTC                 string               `json:utc`
-	UUID                string               `json:uuid`
-	Whitelist           map[string]Whitelist `json:whitelist`
-	ZigbeeChannel       int                  `json:zigbeechannel`
+	NetMask             string               `json:"netmask"`
+	NetworkOpenDuration int                  `json:"networkopenduration"`
+	PanID               int                  `json:"panid"`
+	PortalServices      bool                 `json:"portalservices"`
+	ProxyAddress        string               `json:"proxyaddress"`
+	ProxyPort           int                  `json:"proxyport"`
+	SWUpdate            SWUpdate             `json:"swupdate"`
+	SWVersion           string               `json:"swversion"`
+	TimeFormat          string               `json:"timeformat"`
+	TimeZone            string               `json:"timezone"`
+	UTC                 string               `json:"utc"`
+	UUID                string               `json:"uuid"`
+	Whitelist           map[string]Whitelist `json:"whitelist"`
+	ZigbeeChannel       int                  `json:"zigbeechannel"`
 }
 
-// FullState is populated when calling GetFullState()
 type FullState struct {
-	Config    Configuration                 `json:config`
-	Groups    map[string]groups.Group       `json:groups`
-	Lights    map[string]lights.Light       `json:lights`
-	Sensors   map[string]sensors.Sensor     `json:sensors`
-	Schedules map[string]schedules.Schedule `json:schedules`
-	Rules     map[string]rules.Rule         `json:rules`
+	Config    Configuration                 `json:"config"`
+	Groups    map[string]groups.Group       `json:"groups"`
+	Lights    map[string]lights.Light       `json:"lights"`
+	Sensors   map[string]sensors.Sensor     `json:"sensors"`
+	Schedules map[string]schedules.Schedule `json:"schedules"`
+	Rules     map[string]rules.Rule         `json:"rules"`
 }
 
 func New(hostname string) *Configuration {
@@ -83,7 +82,7 @@ func New(hostname string) *Configuration {
 	}
 }
 
-func (c *Configuration) AquireAPIKey(userName string, deviceType string) ([]conbee.ApiResponse, error) {
+func (c *Configuration) AcquireAPIKey(userName string, deviceType string) ([]conbee.ApiResponse, error) {
 	user := User{
 		UserName:   userName,
 		DeviceType: deviceType,
@@ -92,7 +91,7 @@ func (c *Configuration) AquireAPIKey(userName string, deviceType string) ([]conb
 	if err != nil {
 		return nil, err
 	}
-	url := fmt.Sprintf(aquireAPIkeyURL, c.Hostname)
+	url := fmt.Sprintf(acquireAPIkeyURL, c.Hostname)
 	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 	if err != nil {
 		return nil, err

@@ -115,22 +115,22 @@ func (l *Lights) SetLightAttrs(lightID int, lightName string) ([]conbee.ApiRespo
 	return apiResponse, err
 }
 
-func (state *State) SetOn(OnOff bool) {
-	state.On = new(bool)
-	*state.On = OnOff
+func (s *State) SetOn(OnOff bool) {
+	s.On = new(bool)
+	*s.On = OnOff
 }
 
-func (state *State) SetCT(Bri int, CT int) {
-	state.Bri = new(uint8)
-	*state.Bri = uint8(Bri)
-	state.CT = new(uint16)
-	*state.CT = uint16(CT)
+func (s *State) SetCT(Bri int, CT int) {
+	s.Bri = new(uint8)
+	*s.Bri = uint8(Bri)
+	s.CT = new(uint16)
+	*s.CT = uint16(CT)
 }
 
-func (state *State) SetXY(x, y float32) {
-	state.XY = make([]float32, 2, 2)
-	state.XY[0] = x
-	state.XY[1] = y
+func (s *State) SetXY(x, y float32) {
+	s.XY = make([]float32, 2, 2)
+	s.XY[0] = x
+	s.XY[1] = y
 }
 
 func (l *Lights) SetLightState(lightID int, state *State) ([]conbee.ApiResponse, error) {

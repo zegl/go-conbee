@@ -11,8 +11,6 @@ var (
 	testUsername       string
 	testHostname       string
 	testGroups         *Groups
-	transitionTime     uint16
-	sleepSeconds       int
 	sleepMilliSeconds  int
 	testLightNumbers   []int
 	redState           State
@@ -27,8 +25,6 @@ func init() {
 	testUsername = os.Getenv("DECONZ_CONBEE_APIKEY")
 	testHostname = os.Getenv("DECONZ_CONBEE_HOST")
 	testGroups = New(testHostname, testUsername)
-	transitionTime = uint16(4)
-	sleepSeconds = 4
 	sleepMilliSeconds = 100
 	testLightNumbers = []int{1, 2, 3, 4}
 
